@@ -63,6 +63,9 @@ export default function Navbar() {
           <button className="rounded-md border border-red-800 bg-red-800 px-4 py-2 text-sm sm:text-base text-white hover:bg-red-900">
             Register
           </button>
+
+          <a href="/test"> Test</a>
+           
           
 
           
