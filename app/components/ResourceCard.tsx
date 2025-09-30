@@ -1,11 +1,14 @@
+// app/components/ResourceCard.tsx
 import Image from "next/image";
+import Link from "next/link";
 
 interface TopicCardProps {
   title: string;
   blurb: string;
+  href: string;           // <- add this
 }
 
-export function TopicCard({ title, blurb }: TopicCardProps) {
+export function TopicCard({ title, blurb, href }: TopicCardProps) {
   return (
     <article
       className="flex w-full flex-col items-start gap-4 rounded-xl border border-neutral-200 bg-white 
@@ -26,23 +29,24 @@ export function TopicCard({ title, blurb }: TopicCardProps) {
 
       {/* Text block */}
       <div className="flex flex-1 flex-col">
-        <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-neutral-900">
+        <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-neutral-900 line-clamp-2">
           {title}
         </h2>
 
-        <p className="mt-1 text-sm sm:text-[15px] md:text-base lg:text-lg text-neutral-600">
+        <p className="mt-1 text-sm sm:text-[15px] md:text-base lg:text-lg text-neutral-600 line-clamp-3">
           {blurb}
         </p>
 
         <div className="mt-3">
-          <button
-            type="button"
+          <Link
+            href={href}
+            aria-label={`Read ${title}`}
             className="rounded-md border border-neutral-200 bg-neutral-100 
                        px-3 py-1 text-xs sm:px-4 sm:py-2 sm:text-sm md:px-5 md:py-2 md:text-base 
-                       text-neutral-700 hover:bg-neutral-200"
+                       text-neutral-700 hover:bg-neutral-200 no-underline"
           >
             Read more
-          </button>
+          </Link>
         </div>
       </div>
     </article>
